@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>microservices.book</groupId>
-	<artifactId>social-multiplication</artifactId>
+	<artifactId>gamification</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>social-multiplication</name>
-	<description>Social Multiplication App</description>
+	<name>gamification</name>
+	<description>Gamification App</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
