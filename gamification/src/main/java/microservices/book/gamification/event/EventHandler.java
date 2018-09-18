@@ -2,8 +2,8 @@ package microservices.book.gamification.event;
 
 import lombok.extern.slf4j.Slf4j;
 import microservices.book.gamification.service.GameService;
-import org.springframework.amqp.AmqpRejectAndDontRequeueException;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import microservices.book.multiplication.event.MultiplicationSolvedEvent;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,7 +20,7 @@ class EventHandler {
         this.gameService = gameService;
     }
 
-    @RabbitListener(queues = "${multiplication.queue}")
+    @JmsListener(destination = "${multiplication.queue}")
     void handleMultiplicationSolved(final MultiplicationSolvedEvent event) {
         log.info("Multiplication Solved Event received: {}", event.getMultiplicationResultAttemptId());
         try {
@@ -30,7 +30,7 @@ class EventHandler {
         } catch (final Exception e) {
             log.error("Error when trying to process MultiplicationSolvedEvent", e);
             // Avoids the event to be re-queued and reprocessed.
-            throw new AmqpRejectAndDontRequeueException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 }

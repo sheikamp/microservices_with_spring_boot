@@ -2,6 +2,7 @@ package microservices.book.gamification.event;
 
 import microservices.book.gamification.domain.GameStats;
 import microservices.book.gamification.service.GameService;
+import microservices.book.multiplication.event.MultiplicationSolvedEvent;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
